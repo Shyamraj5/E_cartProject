@@ -1,0 +1,107 @@
+{% extends 'basereg.html'%}
+{% load static%}
+
+
+{%block cred%}
+<link rel="stylesheet" href="{% static 'css/reset.css'%}"> <!-- CSS reset -->
+	<link rel="stylesheet" href="{% static 'css/stylesee.css'%}"> <!-- Resource style -->
+	<script src="{% static 'js/modernizr.js' %}"></script> <!-- Modernizr -->
+  	
+   
+<!-- <div class="row">
+    <div class="col">
+
+             <div style="height: 100vh;width:100vw;position: relative;">
+                 <div class="card" >
+                    <img class="card-img-top" src="{{product.image.url}}" height="400px" width="200px" alt="Card image">
+                    <a href="#" class="btn btn-primary">add to cart</a>
+                    <a href="#" class="btn btn-primary">buy now</a>
+                </div>
+            </div>
+        </div>
+        <div class="col">
+                    <div class="card-body">
+                    <h4 class="card-title">{{product.pr_name}}</h4>
+                    <h5>{{product.pr_price}}₹</h5>
+                    <p class="card-text">{{product.pr_discription}}</p>
+                    
+                    </div>
+            </div>
+                
+</div> -->
+
+
+<header>
+    <h1>Product Quick View</h1>
+</header>
+
+<ul class="cd-items cd-container">
+    <li class="cd-item">
+        <img src="{{product.image.url}}" id="pop" alt="Item Preview">
+        <h2>{{product.pr_name}}</h2>
+        <a href="#0" class="cd-trigger">Quick View</a>
+    </li> <!-- cd-item -->
+
+    
+
+<div class="cd-quick-view">
+    <div class="cd-slider-wrapper">
+        <ul class="cd-slider">
+            <li class="selected"><img src="{{product.image.url}}" alt="Product 1"></li>
+            
+           
+        </ul> <!-- cd-slider -->
+
+        <ul class="cd-slider-navigation">
+            <li><a class="cd-next" href="#0">Prev</a></li>
+            <li><a class="cd-prev" href="#0">Next</a></li>
+        </ul> <!-- cd-slider-navigation -->
+    </div> <!-- cd-slider-wrapper -->
+
+    <div class="cd-item-info">
+        <h2>{{product.pr_name}}</h2>
+        <h5>{{product.pr_price}}₹</h5>
+        <p>{{product.pr_discription}}</p>
+        <p>{{product.id}}</p>
+
+        <ul class="cd-item-action">
+            <li><button class="add-to-cart" ><a href="{% url 'addcart' product.id %}">Add to cart</button></li></a>					
+            <li><a href="#0">Learn more</a></li>	
+        </ul> <!-- cd-item-action -->
+    </div> <!-- cd-item-info -->
+    <a href="#0" class="cd-close">Close</a>
+</div>
+ <!-- cd-quick-view -->
+<script src="{% static 'js/jquery-2.1.1.js'%}"></script>
+<script src="{% static 'js/velocity.min.js'%}"></script>
+<script src="{% static 'js/main.js' %}"></script>
+ 
+ 
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    {% endblock cred%}

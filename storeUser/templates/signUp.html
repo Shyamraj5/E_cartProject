@@ -1,0 +1,69 @@
+{% extends 'basereg.html'%}
+{% load static%}
+{%block cred%}
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="{% static 'css/signup.css' %}">
+  
+  <!-- Optional JavaScript -->
+  <form action="" method="post">
+    {% csrf_token %}
+    <div class="row container-sm" >
+      <div class="col" >
+        <div class="card  " id="card">
+          <img src="{% static 'images/s.tore.jpg'%}" class="" style="height: 670px; width: 300px; border-radius: 30px !important;">
+        </div>
+      </div>
+       <div class="col" >
+          <div class="card" style="width: 330px;">
+            <div class="wrapper">
+              <div class="img">
+                <img src="{% static 'images/title2.jpg'%}" style="width:300px; border-radius: 30px;">
+              </div>
+              {{form.errors}}
+              <div class="input-box">
+                {{form.first_name.errors}}
+                <label class="form-label" for="{{form.first_name.id_for_label}}">first name</label>
+                {{form.first_name}}
+              </div>
+              <div class="input-box">
+                {{form.last_name.errors}}
+                <label class="form-label" for="{{form.last_name.id_for_label}}">last name</label>
+                {{form.last_name}}
+              </div>
+              <div class="input-box">
+                {{form.email.errors}}
+                <label class="form-label" for="{{form.email.id_for_label}}">email </label>
+                {{form.email}}
+              </div>
+              <div class="input-box">
+                {{form.username.errors}}
+                <label class="form-label" for="{{form.username.id_for_label}}">username </label>
+                {{form.username}}
+              </div>
+              <div class="input-box">
+                {{form.password1.error}}
+                <label class="form-label" for="{{form.password1.id_for_label}}">create pasword </label>
+                {{form.password1}}
+                
+              </div>
+              <div class="input-box">
+                {{form.password2.error}}
+                <label class="form-label" for="{{form.password2.id_for_label}}">confirm pasword </label>
+                {{form.password2}}
+              </div>
+              <div class="policy">
+                <input type="checkbox">
+                <h3>I accept all terms & condition</h3>
+              </div>
+              <div class="text-center">
+                <button class=" btn btn-info">signup</button>
+              </div>
+              <div class="text">
+                <h3>Already have an account? <a href="{% url 'signin'%}">Login now</a></h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  </form>
+{% endblock cred%}

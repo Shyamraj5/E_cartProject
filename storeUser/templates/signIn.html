@@ -1,0 +1,51 @@
+{% extends 'basereg.html'%}
+{% load static%}
+{%block cred%}
+
+   
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="{% static 'css/signup.css' %}">
+
+
+  <form action="" method="post">
+    {% csrf_token %}
+    <div class="row">
+      <div class="col">
+        <div class="card" id="sc">
+          <img src="{% static 'images/s.tore.jpg'%}" class="" style="height: 310px; border-radius: 30px !important;">
+        </div>
+      </div>
+      <div class="col">
+        <div class="card">
+          <div class="wrapper">
+            <h2>signin</h2>
+
+            <div class="input-box">
+              {{form.username.errors}}
+              <label class="form-label" for="{{data7.name.id_for_label}}">username</label>
+              {{form.username}}
+            </div>
+            <div class="input-box">
+              {{form.password.errors}}
+              <label class="form-label" for="{{form.password.id_for_label}}">Password</label>
+              {{form.password}}
+            </div>
+
+            <div class="policy">
+              <input type="checkbox">
+              <h3>I accept all terms & condition</h3>
+            </div>
+            <div class="text-center">
+              <button class=" btn btn-info">sign in</button>
+            </div>
+            <div class="text">
+              <h3>New user? <a href="{% url 'signup'%}">signup now</a></h3>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+
+  {% endblock cred%}

@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <title>Title</title>
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+    crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+
+
+
+
+
+
+
+  <!-- Pills navs -->
+  <ul class="nav nav-pills nav-justified mb-3" id="ex1" role="tablist">
+
+    <li class="nav-item" role="presentation">
+      <a class="nav-link" id="tab-register" data-mdb-toggle="pill" href="#pills-register" role="tab"
+        aria-controls="pills-register" aria-selected="false">Register</a>
+    </li>
+  </ul>
+  <!-- Pills navs -->
+
+  <!-- Pills content -->
+  <div class="tab-content">
+    <div class="tab-pane fade show active" id="pills-login" role="tabpanel" aria-labelledby="tab-login">
+      <form>
+
+
+        <!-- Submit button -->
+        <button type="submit" class="btn btn-primary btn-block mb-4">Sign in</button>
+
+        <!-- Register buttons -->
+
+        <div class="tab-pane fade" id="pills-register" role="tabpanel" aria-labelledby="tab-register">
+          <form>
+            <div class="text-center mb-3">
+              <p>Sign up with:</p>
+              <button type="button" class="btn btn-link btn-floating mx-1">
+                <i class="fab fa-facebook-f"></i>
+              </button>
+
+              <button type="button" class="btn btn-link btn-floating mx-1">
+                <i class="fab fa-google"></i>
+              </button>
+
+              <button type="button" class="btn btn-link btn-floating mx-1">
+                <i class="fab fa-twitter"></i>
+              </button>
+
+              <button type="button" class="btn btn-link btn-floating mx-1">
+                <i class="fab fa-github"></i>
+              </button>
+            </div>
+
+            <p class="text-center">or:</p>
+            <form action="" method="post">
+              {% csrf_token %}
+              <!-- Name input -->
+              <div class="form-outline mb-4">
+
+                {{form.first_name.errors}}
+                <label class="form-label" for="{{form.first_name.id_for_label}}">first name</label>
+                {{form.first_name}}
+              </div>
+
+              <!-- Username input -->
+              <div class="form-outline mb-4">
+                {{form.last_name.errors}}
+                <label class="form-label" for="{{form.last_name.id_for_label}}">last name</label>
+                {{form.last_name}}
+              </div>
+
+
+              <!-- Email input -->
+              <div class="form-outline mb-4">
+                {{form.email.errors}}
+                <label class="form-label" for="{{form.email.id_for_label}}">email </label>
+                {{form.email}}
+              </div>
+
+              <!-- Password input -->
+              <div class="form-outline mb-4">
+                {{form.username.errors}}
+                <label class="form-label" for="{{form.username.id_for_label}}">username </label>
+                {{form.email}}
+              </div>
+
+              <!-- Repeat Password input -->
+              <div class="form-outline mb-4">
+                {{form.password1.errors}}
+                <label class="form-label" for="{{form.password1.id_for_label}}">password1 </label>
+                {{form.password1}}
+              </div>
+              <div class="form-outline mb-4">
+                {{form.password2.errors}}
+                <label class="form-label" for="{{form.password2.id_for_label}}">password2 </label>
+                {{form.password2}}
+              </div>
+              <!-- Checkbox -->
+              <div class="form-check d-flex justify-content-center mb-4">
+                <input class="form-check-input me-2" type="checkbox" value="" id="registerCheck" checked
+                  aria-describedby="registerCheckHelpText" />
+                <label class="form-check-label" for="registerCheck">
+                  I have read and agree to the terms
+                </label>
+              </div>
+
+              <!-- Submit button -->
+
+        </div>
+    </div>
+    <div class="text-center">
+      <button class=" btn btn-succes">signup</button>
+    </div>
+    <!-- Pills content -->
+    </form>
+
+
+    
+      {{form.username.errors}}
+      <label class="form-label" for="{{data7.name.id_for_label}}">username</label>
+      {{form.username}}
+  
+
+
+
+    {{form.password.errors}}
+    <label class="form-label" for="{{form.password.id_for_label}}">Password</label>
+    {{form.password}}
+</body>
+
+</html>
+
+
+{% extends 'basereg.html'%}
+{% load static%}
+{%block cred%}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+
+    {% for j in messages %}
+    {% if j.level == DEFAULT_MESSAGE_LEVELS.SUCCESS %}
+    <div class="alert alert-success">
+      <p>{{j}}</p>
+    </div>
+    {% endif %}
+    {% if j.level == DEFAULT_MESSAGE_LEVELS.ERROR %}
+    <div class="alert alert-danger">
+      <p>{{j}}</p>
+      {% endif %}    
+    {% endfor %}
+      
+ 
+
+   
+     <header>
+       <h1>E-commerce Website</h1>
+     </header>
+   
+     
+     <div class="row">
+       {% for i in product %}
+       <div class="card" >
+        <img src="{{ i.image.url }}" height="400px" width="200px" alt="Product Image">
+        <div class="card-content card-">
+          <h2>{{i.pr_name}}</h2>
+          <h4>{{i.pr_price }}</h4>
+          <p>{{i.pr_discription}}</p>
+          <button>Add to Cart</button>
+        </div>
+      </div>
+      
+       {% endfor %}
+      </div>
+
+       <!-- <div class="card">
+         <img src="product2.jpg" alt="Product 2">
+         <h2>Product 2</h2>
+         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+         <button>Add to Cart</button>
+       </div>
+   
+       <div class="card">
+         <img src="product3.jpg" alt="Product 3">
+         <h2>Product 3</h2>
+         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+         <button>Add to Cart</button>
+       </div> -->
+   
+   
+     <footer>
+       <p>&copy; 2023 E-commerce Website. All rights reserved.</p>
+     </footer>
+
+   
+    <a href="{% url 'signup'%}">signup</a>
+    {% endblock cred%}
+
+
+
+    center
+    style="width:400px;position: absolute;top:50%;left:50%;transform: translate(-50%,-50%);"
+
+    @import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
+    body
+    {
+      margin: 0;padding:0;font-family: 'Open Sans', serif;background: #AB47BC
+    }
+    .product
+    {
+      position: absolute;top: 50%;left: 50%;transform: translate(-50%,-50%);width: 300px;height: 400px;box-shadow: 0 20px 40px rgba(0,0,0,.2);border-radius: 5px;background:#0e0e0f;overflow: hidden
+    }
+    .product .imgbox
+    {
+      height: 100%;box-sizing: border-box}
+    .product .imgbox img
+    {
+      display: block;width: 80%;margin: 10px auto 0}
+    .specifies
+    {
+      position: absolute;width: 100%;bottom: -160px;background: #fff;padding:10px;box-sizing: border-box;transition: .5s
+    }.product:hover 
+    .specifies{
+      bottom: 0}
+    .specifies h2{
+      margin: 0;padding: 0;font-size: 20px;width: 100%
+    }
+      .specifies h2 span
+      {
+        font-size: 15px;color: #ccc;font-weight: normal
+      }
+        .specifies .price
+        {
+          position: absolute;top: 12px;right: 25px;font-weight: bold;color: #000;font-size: 30px
+        }
+          label{
+            display: block;margin-top: 5px;font-weight: bold;font-size: 15px}ul{display: flex;margin: 0;padding: 0}ul li{list-style: none;margin: 5px 5px 0;font-size: 15px;font-style: normal;color: #ccc}ul li:first-child{margin-left: 0}ul.colors li{width: 15px;height: 15px}ul.colors li:nth-child(1){background: #4A148C}ul.colors li:nth-child(2){background: #F50057}ul.colors li:nth-child(3){background: #536DFE}ul.colors li:nth-child(4){background: #388E3C}ul.colors li:nth-child(5){background: #FF6D00}.btn{display: block;padding: 5px;color: #fff;margin: 10px 0 0;width:100%;font-size: 13px;border-radius: 2px}
