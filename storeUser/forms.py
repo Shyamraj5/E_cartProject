@@ -1,6 +1,7 @@
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 from django import forms
+from.models import *
 
 class signUpform(UserCreationForm):
     class Meta:
@@ -11,4 +12,7 @@ class signInform(forms.Form):
     username=forms.CharField(max_length=100)
     password=forms.CharField(max_length=100,widget=forms.PasswordInput())
 
-
+class CartForm(forms.Form):
+    class Meta:
+        model=Cart
+        fields=["quantity"]

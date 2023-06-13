@@ -84,7 +84,7 @@ class productDet(DetailView):
     context_object_name="product"
     pk_url_kwarg='id'
 
-
+class quantity(v)
 
 class MyCart(TemplateView):
     template_name='Mycart.html'
@@ -92,6 +92,11 @@ class MyCart(TemplateView):
         context=super().get_context_data(**kwargs)
         context["cart"]=Cart.objects.filter(user=self.request.user)
         return context
+def Delcart(request,*args,**kwargs):
+        id=kwargs.get("id")
+        Cart.objects.filter(id=id).delete()
+        messages.success(request,"item removed")
+        return redirect("mycart")
     
 def addcart(request,*args,**kwargs):
     id=kwargs.get("id")
@@ -104,4 +109,5 @@ def addcart(request,*args,**kwargs):
         Cart.objects.create(product=product,user=user,status="carted")
         messages.success(request,"Added to Cart")
         return render(request,"Mycart.html")
+
     
