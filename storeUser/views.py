@@ -9,8 +9,20 @@ from django.contrib.auth import authenticate,login
 from django.contrib import messages
 from owner.models import Product
 from .models import Cart
+from django.utils.decorators import method_decorator
+from django.views.decorators.cache import never_cache
 # Create your views here.
+def signin_required(fn):
+    def inner(request,*args, **kwargs):
+        if request.user.is_authenticated:
+            return fn(request,*args, **kwargs)
+        else:
+            messages.error(request,"please login first")
+            return redirect("signin")
+    return inner
+dec=[signin_required,never_cache]
 
+@method_decorator(dec,name='dispatch')
 class Home(ListView):
     template_name="home.html"
     model=Product
@@ -31,6 +43,7 @@ class Home(ListView):
 #             return redirect('home')
 #         else:
 #             return render(request,"signUp.html",{"form":form_data})
+@method_decorator(dec,name='dispatch')
 class signUP(CreateView):
     template_name="signUp.html"
     form_class=signUpform
@@ -46,7 +59,7 @@ class signUP(CreateView):
         print("invalid")
         return super().form_invalid(form)
     
-    
+@method_decorator(dec,name='dispatch')   
 class signIn(View):
     def get(self,request,*args, **kwargs):
         form=signInform()
@@ -78,26 +91,28 @@ class signIn(View):
 #         product = Product.objects.filter(id=id)
 #         return render(request, 'seemore.html', {'product': product})
 
+@method_decorator(dec,name='dispatch')
 class productDet(DetailView):
     template_name="seemore.html"
     model=Product
     context_object_name="product"
     pk_url_kwarg='id'
 
-class quantity(v)
 
+@method_decorator(dec,name='dispatch')
 class MyCart(TemplateView):
     template_name='Mycart.html'
     def get_context_data(self, **kwargs):
         context=super().get_context_data(**kwargs)
         context["cart"]=Cart.objects.filter(user=self.request.user)
         return context
+dec
 def Delcart(request,*args,**kwargs):
         id=kwargs.get("id")
         Cart.objects.filter(id=id).delete()
         messages.success(request,"item removed")
         return redirect("mycart")
-    
+dec    
 def addcart(request,*args,**kwargs):
     id=kwargs.get("id")
     product=Product.objects.get(id=id)
@@ -109,5 +124,5 @@ def addcart(request,*args,**kwargs):
         Cart.objects.create(product=product,user=user,status="carted")
         messages.success(request,"Added to Cart")
         return render(request,"Mycart.html")
-
+ 
     
