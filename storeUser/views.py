@@ -43,7 +43,6 @@ class Home(ListView):
 #             return redirect('home')
 #         else:
 #             return render(request,"signUp.html",{"form":form_data})
-@method_decorator(dec,name='dispatch')
 class signUP(CreateView):
     template_name="signUp.html"
     form_class=signUpform
@@ -59,7 +58,6 @@ class signUP(CreateView):
         print("invalid")
         return super().form_invalid(form)
     
-@method_decorator(dec,name='dispatch')   
 class signIn(View):
     def get(self,request,*args, **kwargs):
         form=signInform()
