@@ -17,3 +17,5 @@ class Product(models.Model):
     category=models.CharField(max_length=100,choices=options,default='')
     image=models.ImageField(upload_to="productImage")
     pr_discription=models.CharField(null=True, max_length=1000)
+    def calculate_total_amount(self):
+        return self.pr_price 

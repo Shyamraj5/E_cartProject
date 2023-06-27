@@ -23,6 +23,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('app/',include("storeUser.store_url")),
+    path('owner/',include("owner.ourl")),
     
       path('',signUP.as_view(),name="signup"),
     

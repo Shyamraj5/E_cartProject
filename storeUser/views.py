@@ -1,3 +1,4 @@
+from typing import Any, Dict
 from django.forms.models import BaseModelForm
 from django.http import HttpResponse
 from django.shortcuts import render,redirect
@@ -103,7 +104,10 @@ class MyCart(TemplateView):
     def get_context_data(self, **kwargs):
         context=super().get_context_data(**kwargs)
         context["cart"]=Cart.objects.filter(user=self.request.user)
+        
         return context
+    
+   
 dec
 def Delcart(request,*args,**kwargs):
         id=kwargs.get("id")
@@ -116,11 +120,22 @@ def addcart(request,*args,**kwargs):
     product=Product.objects.get(id=id)
     user=request.user
     if Cart.objects.filter(product=product,user=request.user):
-        messages.warning(request,"Alredy Added in Cart")
+        messages.warning(request,"Already Added in Cart")
         return redirect('home')
     else:
         Cart.objects.create(product=product,user=user,status="carted")
         messages.success(request,"Added to Cart")
         return render(request,"Mycart.html")
- 
     
+
+# class totel(TemplateView):
+#     template_name=""
+#     def cart_view(request,*args,**kwargs):
+#      id=kwargs.get("id")
+def cart_view(request):
+    cart = Cart.objects.get(id=1)  # Replace 1 with the actual cart ID
+    total_price = cart.calculate_total_price()
+
+    return render(request, 'Mycart.html', {'cart': cart, 'total_price': total_price})
+    
+   

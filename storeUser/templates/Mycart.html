@@ -21,7 +21,7 @@
           <div class="col-md-8">
               <div class="p-2">
                   <h4>Shopping cart</h4>
-                  <div class="d-flex flex-row align-items-center pull-right"><span class="mr-1">Sort by:</span><span class="mr-1 font-weight-bold">Price</span><i class="fa fa-angle-down"></i></div>
+                  <div class="d-flex flex-row align-items-center pull-right"><span class="mr-1">Sort by:{{ total_amount }}</span><span class="mr-1 font-weight-bold">Price</span><i class="fa fa-angle-down"></i></div>
               </div>
               <div class="d-flex flex-row justify-content-between align-items-center p-2 bg-white mt-4 px-3 rounded">
                   <div class="mr-1"><img class="rounded" src="{{ i.product.image.url }}" width="70"></div>
@@ -43,8 +43,12 @@
               <div class="d-flex flex-row align-items-center mt-3 p-2 bg-white rounded"><button class="btn btn-warning btn-block btn-lg ml-2 pay-button" type="button">Proceed to Pay</button></div>
             </div>
           </div>
+          
         </div>
+        <h5>total amount:{{i.totel}}</h5>
+    
         {% endfor %}
-   
+        {{total_price}}
+       
   </body>
 </html>
