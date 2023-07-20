@@ -1,0 +1,24 @@
+authenticstion
+
+rest_framework ->
+permission.py -> 
+
+IsAuthenticated    :             must be authenticated using any of the authentication 
+AllowAny           :             any one can give reuest
+IsAdminUser        :             it checks for admin only admin is accepted
+IsAuthen   ReadOnly:             only for authenticated user other wise can get only
+
+IsAuthentication.py->
+
+BasicAuthenticaion   :
+
+
+
+TokenAuthentication 55 
+
+installed apps->
+'rest_framework.authtoken'
+SessionAuthentication
+
+
+
